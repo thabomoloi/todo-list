@@ -1,5 +1,5 @@
 // Gets the header elements.
-const header = (() => {
+const getHeader = (() => {
     /**
      * Gets the menu button
      * @returns element that represents the menu button
@@ -32,3 +32,13 @@ const header = (() => {
 
     return {getMenuButton, getSiteName};
 })();
+
+
+function loadHeader() {
+    // Selecter header element
+    const header = document.querySelector("header");
+    // Add children
+    header.append(getHeader.getSiteName, getHeader.getSiteName);
+}
+
+export default loadHeader;
