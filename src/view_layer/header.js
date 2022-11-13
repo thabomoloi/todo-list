@@ -6,7 +6,7 @@ const getHeader = (() => {
      */
     function getMenuButton() {
         // create elemet to reprsent the menu button
-        const menuButton = document.createElement("span");
+        const menuButton = document.createElement("button");
         // Add class name
         menuButton.classList.add("menu-button");
         // Add hamburger-menu icon
