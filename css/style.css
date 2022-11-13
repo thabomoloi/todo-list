@@ -16,6 +16,7 @@ body {
     flex-flow: column;
     min-height: 100vh;
     font-weight: 500;
+    background-color: whitesmoke;
 }
 
 header {
@@ -60,6 +61,7 @@ footer {
     padding: 1.5em;
     font-size: 1.25em;
     width: 15em;
+    color: #0f766e;
 }
 #sidemenu h2 {
     border-bottom: 3px solid #0f766e;
@@ -73,6 +75,7 @@ footer {
     font: inherit;
     padding: 0.2em 0.5em;
     display: block;
+    color: inherit;
 }
 #sidemenu .subnav .nav-item {
     padding: 0 1em;
