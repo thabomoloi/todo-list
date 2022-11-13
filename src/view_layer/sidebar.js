@@ -8,15 +8,20 @@ const getTasks = () => {
     const taskList = document.createElement("div");
     taskList.className = "nav-items";
 
+    // Inbox
+    const inbox = document.createElement("button");
+    inbox.className = "nav-item";
+    inbox.innerHTML = `<i class="fa-solid fa-inbox"></i><span>Inbox</span>`;
+
     // Today
     const today = document.createElement("button");
     today.className = "nav-item"
     today.innerHTML = `<i class="fa-solid fa-calendar-day"></i><span>Today<span>`;
 
     // Week
-    const week = document.createElement("button");
-    week.className = "nav-item";
-    week.innerHTML = `<i class="fa-solid fa-calendar-week"></i><span>This Week<span>`;
+    const upcoming = document.createElement("button");
+    upcoming.className = "nav-item";
+    upcoming.innerHTML = `<i class="fa-solid fa-calendar-days"></i><span>Upcoming<span>`;
 
     // Priority
     const priority = document.createElement("button")
@@ -27,7 +32,7 @@ const getTasks = () => {
     const priorityList = document.createElement("div")
     priorityList.classList.add("subnav", "nav-items");
 
-    taskList.append(today, week, priority)
+    taskList.append(inbox, today, upcoming, priority)
 
     // high
     const high = document.createElement("button");
