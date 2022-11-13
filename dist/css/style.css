@@ -74,9 +74,6 @@ footer {
     padding: 0.2em 0.5em;
     display: block;
 }
-#sidemenu button.priority {
-    padding-bottom: 0;
-}
 #sidemenu .subnav .nav-item {
     padding: 0 1em;
 }
@@ -95,4 +92,13 @@ section nav{
 
 .subnav.nav-items {
     padding: 0 1em;
+}
+#sidemenu button:hover {
+    background-color: #0d9488;
+    color: white;
+}
+#sidemenu button.active {
+    background-color: #0f766e;
+    color: white;
+    font-weight: 600;
 }
