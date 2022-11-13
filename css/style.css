@@ -11,10 +11,11 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito', sans-serif;
     display: flex;
     flex-flow: column;
     min-height: 100vh;
+    font-weight: 500;
 }
 
 header {
@@ -24,7 +25,7 @@ header {
     grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: 1fr;
     padding: 0.5em 1em;
-    background-color: #0d9488;
+    background-color: #0f766e;
     color: aliceblue;
     flex: 0 1 auto;
 }
@@ -54,16 +55,33 @@ main {
 footer {
     flex: 0 1 auto;
 }
+#sidemenu {
+    border-right: 1px solid gainsboro;
+    padding: 1.5em;
+    font-size: 1.25em;
+    width: 15em;
+}
+#sidemenu h2 {
+    border-bottom: 3px solid #0f766e;
+}
 #sidemenu button {
     background: none;
     border: none;
     padding: 0;
     margin: 0;
     text-align: left;
-    font-size: inherit;
+    font: inherit;
+    padding: 0.2em 0.5em;
+    display: block;
 }
-#content {
-
+#sidemenu button.priority {
+    padding-bottom: 0;
+}
+#sidemenu .subnav .nav-item {
+    padding: 0 1em;
+}
+#sidemenu button i {
+    padding-right: 10px;
 }
 section nav{
     display: grid;
@@ -72,4 +90,9 @@ section nav{
 .nav-items {
     display: flex;
     flex-direction: column;
+    padding: 0.5em;
+}
+
+.subnav.nav-items {
+    padding: 0 1em;
 }
