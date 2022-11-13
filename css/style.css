@@ -54,7 +54,13 @@ main {
 footer {
     flex: 0 1 auto;
 }
-#sidemenu {
+#sidemenu button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: inherit;
 }
 #content {
 
