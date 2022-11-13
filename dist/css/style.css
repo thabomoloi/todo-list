@@ -12,6 +12,9 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
 }
 
 header {
@@ -23,6 +26,7 @@ header {
     padding: 0.5em 1em;
     background-color: #0d9488;
     color: aliceblue;
+    flex: 0 1 auto;
 }
 header span.site-name {
     text-align: center;
@@ -39,4 +43,27 @@ header button.menu-button {
     width: 32px;
     align-content: end;
     grid-column: 4/5;
+}
+
+main {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 1fr;
+    flex: 1 1 auto;
+}
+footer {
+    flex: 0 1 auto;
+}
+#sidemenu {
+}
+#content {
+
+}
+section nav{
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.nav-items {
+    display: flex;
+    flex-direction: column;
 }
