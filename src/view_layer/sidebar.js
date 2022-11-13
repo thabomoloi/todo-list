@@ -11,17 +11,17 @@ const getTasks = () => {
     // Today
     const today = document.createElement("button");
     today.className = "nav-item"
-    today.innerHTML = `<i class="fa-solid fa-calendar-day"></i> Today`;
+    today.innerHTML = `<i class="fa-solid fa-calendar-day"></i><span>Today<span>`;
 
     // Week
     const week = document.createElement("button");
     week.className = "nav-item";
-    week.innerHTML = `<i class="fa-solid fa-calendar-week"></i> This Week`;
+    week.innerHTML = `<i class="fa-solid fa-calendar-week"></i><span>This Week<span>`;
 
     // Priority
     const priority = document.createElement("button")
     priority.className = "priority";
-    priority.innerHTML = `<i class="fa-solid fa-exclamation"></i> Priority`;
+    priority.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i><span>Priority<span>`;
 
     // Priority submenu
     const priorityList = document.createElement("div")
@@ -32,18 +32,19 @@ const getTasks = () => {
     // high
     const high = document.createElement("button");
     high.classList.add("nav-item", "priority-item");
-    high.innerText = "High";
+    high.innerHTML = `<i class="fa-solid fa-angle-right"></i><span>High</span>`;
     // Medium
     const medium = document.createElement("button");
     medium.classList.add("nav-item", "priority-item");
-    medium.innerText = "Medium";
+    medium.innerHTML = `<i class="fa-solid fa-angle-right"></i><span>Medium</span>`;
     // Low
     const low = document.createElement("button");
     low.classList.add("nav-item", "priority-item");
-    low.innerText = "Low";
+    low.innerHTML = `<i class="fa-solid fa-angle-right"></i><span>Low</span>`;
 
     priorityList.append(high, medium, low);
-    tasks.append(taskList, priorityList);
+    taskList.appendChild(priorityList);
+    tasks.appendChild(taskList);
 
     return tasks;
 }
@@ -58,9 +59,9 @@ const getProjects = () => {
 
     const add_project = document.createElement("button");
     add_project.classList.add("btn-add-project");
-    add_project.innerHTML = `<i class="fa-solid fa-plus"></i> Add new project`;
-
-    projects.append(projectList, add_project);
+    add_project.innerHTML = `<i class="fa-solid fa-plus"></i><span>Add new<span>`;
+    projectList.appendChild(add_project);
+    projects.appendChild(projectList);
     return projects;
 }
 
