@@ -27,6 +27,16 @@ header {
 header span.site-name {
     text-align: center;
 }
-header span.menu-button {
+header button.menu-button {
+    background: none;
+    padding: 0;
+    margin: 0;
     text-align: end;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    height: 32px;
+    width: 32px;
+    align-content: end;
+    grid-column: 4/5;
 }
