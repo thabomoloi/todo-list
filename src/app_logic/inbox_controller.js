@@ -2,7 +2,7 @@ import TodoList from "../entities/todoList";
 import Todo from "../entities/ToDo";
 import TodoStorage from "../data_storage/todo_storage";
 import Inbox from "../entities/inbox";
-import { format } from "date-fns";
+import { format, compareAsc } from "date-fns";
 class InboxController {
     constructor() {
 
@@ -24,6 +24,24 @@ class InboxController {
     saveToStorage(todoList) {
         return TodoStorage.save(todoList);
     }
+    editTask(task) {
+        const container = document.querySelector(".todo-modal-container");
+
+        if (container != null) {
+            container.style.display = "block";
+            const h1 = document.querySelector(".todo-modal-container .modal-content h1");
+            h1.innerText = "Edit task";
+
+            const title = document.querySelector(".todo-modal-container #todo-title");
+            title.value = task.title;
+            const description = document.querySelector(".todo-modal-container #todo-description");
+            description.value = task.description;
+            const dueDate = document.querySelector(".todo-modal-container #due-date");
+            dueDate.value = task.dueDate;
+            const priority = document.querySelector(".todo-modal-container #priority");
+            priority.value = task.priority;
+        }
+    }
     updateInbox() {
         const inboxToDo = this.getInbox();
         const projects = this.getAllProjects();
@@ -34,6 +52,8 @@ class InboxController {
             inboxToDo.tasks.forEach(element => {
                 const task = document.createElement("div");
                 task.id = element.id;
+                task.classList.add(element.done ? "done-task" : "todo-task");
+                task.classList.add(compareAsc(Date.parse(element.dueDate), new Date()) == -1 ? "task-due-date-passed" : "task-upcoming");
                 inbox.appendChild(task);
 
                 const checkbox = document.createElement("input")
@@ -68,6 +88,10 @@ class InboxController {
                 editButton.id = `${element.id}-edit-button`;
                 editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
                 task.appendChild(editButton);
+
+                editButton.addEventListener("click", (event) => {
+                    this.editTask(element)
+                });
 
                 const deleteButton = document.createElement("button");
                 deleteButton.id = `${element.id}-delete-button`;
