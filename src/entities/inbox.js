@@ -1,5 +1,5 @@
 function Inbox(todos = []) {
-    const name = Inbox;
+    const name = "inbox";
     const tasks = todos;
     return { name, tasks };
 }
