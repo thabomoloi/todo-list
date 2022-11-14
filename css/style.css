@@ -94,18 +94,18 @@ section nav{
 }
 
 .subnav.nav-items {
+    display: none;
     padding: 0 1em;
 }
 #sidemenu button:hover {
     background-color: #0d9488;
     color: white;
 }
-#sidemenu button.active {
+#sidemenu button.active-side-menu-btn {
     background-color: #0f766e;
     color: white;
     font-weight: 600;
 }
-
 .todo-modal-container {
     display: none;
     position: fixed;
