@@ -32,6 +32,8 @@ class InboxController {
                 checkbox.id = `${element.id}-checkbox}`;
                 checkbox.checked = element.done;
                 task.appendChild(checkbox);
+                checkbox.style.backgroundImage = (checkbox.checked) ? `url("../dist/images/check-solid.svg")` : "none";
+
                 checkbox.addEventListener('click', (event) => {
                     element.done = event.target.checked;
                     const todoList = TodoList(inboxToDo, projects);
@@ -41,9 +43,7 @@ class InboxController {
 
                 const title = document.createElement("label");
                 title.setAttribute("for", checkbox.id);
-                title.innerHTML = `
-                    <h4 class="task-title">${element.title}</h4>
-                    <div class="element-description">${element.description}</div>`;
+                title.innerHTML = `<strong>${element.title}</strong>`;
                 task.appendChild(title)
 
                 const priorityColor = document.createElement("span")
@@ -57,12 +57,12 @@ class InboxController {
 
                 const editButton = document.createElement("button");
                 editButton.id = `${element.id}-edit-button`;
-                editButton.innerText = "Edit";
+                editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
                 task.appendChild(editButton);
 
                 const deleteButton = document.createElement("button");
                 deleteButton.id = `${element.id}-delete-button`;
-                deleteButton.innerText = "Delete";
+                deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
                 task.appendChild(deleteButton);
 
                 deleteButton.addEventListener("click", (event) => {
