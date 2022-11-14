@@ -64,7 +64,7 @@ const getProjects = () => {
 
     const add_project = document.createElement("button");
     add_project.classList.add("btn-add-project");
-    add_project.innerHTML = `<i class="fa-solid fa-plus"></i><span>Add new<span>`;
+    add_project.innerHTML = `<i class="fa-solid fa-plus"></i><span>Add new project<span>`;
     projectList.appendChild(add_project);
     projects.appendChild(projectList);
     return projects;
