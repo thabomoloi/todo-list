@@ -9,8 +9,8 @@ function loadPage() {
     const inboxController = new InboxController();
     loadHeader();
     loadSidebar();
-    loadAddTODO(inboxController);
     loadInbox(inboxController);
     inboxController.updateInbox();
+    loadAddTODO(inboxController);
 }
 loadPage();
