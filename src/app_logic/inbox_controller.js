@@ -1,10 +1,19 @@
 import TodoList from "../entities/todoList";
 import Todo from "../entities/ToDo";
 import TodoStorage from "../data_storage/todo_storage";
+import Inbox from "../entities/inbox";
 import { format } from "date-fns";
 class InboxController {
     constructor() {
 
+    }
+    removeInbox(task) {
+        const tasks = this.getInbox().tasks.filter(item => item.id != task.id);
+        for (let i = 0; i < task.length; i++)
+            tasks[i].id = `inbox-${i}`;
+        const projects = this.getAllProjects();
+        const todoList = TodoList(Inbox(tasks), projects);
+        this.saveToStorage(todoList);
     }
     getInbox() {
         return TodoStorage.getInbox();
@@ -20,7 +29,7 @@ class InboxController {
         const projects = this.getAllProjects();
 
         const inbox = document.querySelector("#inbox");
-        if (inbox) {
+        if (inbox && inboxToDo.tasks) {
             inbox.innerHTML = ``;
             inboxToDo.tasks.forEach(element => {
                 const task = document.createElement("div");
@@ -66,9 +75,7 @@ class InboxController {
                 task.appendChild(deleteButton);
 
                 deleteButton.addEventListener("click", (event) => {
-                    inboxToDo.tasks.pop(element);
-                    const todoList = TodoList(inboxToDo, projects);
-                    this.saveToStorage(todoList);
+                    this.removeInbox(element);
                     this.updateInbox();
                 });
             });
