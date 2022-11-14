@@ -1,4 +1,5 @@
-function loadInbox() {
+function loadInbox(inboxController) {
+
     const content = document.querySelector("#content");
     // Inbox heading
     const heading = document.createElement("h1");
@@ -14,5 +15,7 @@ function loadInbox() {
     addTaskBtn.innerHTML = `<i class="fa-solid fa-plus"></i><span>Add task<span>`;
     addTaskBtn.className = "btn-add-task";
     content.appendChild(addTaskBtn);
+
+    inboxController.updateInbox();
 }
 export default loadInbox;
