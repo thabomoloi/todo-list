@@ -1,4 +1,4 @@
-function createModal(modalController) {
+function createModal(inboxController) {
     const modal_container = document.createElement("div");
     modal_container.className = "todo-modal-container";
 
@@ -41,7 +41,6 @@ function createModal(modalController) {
     description_input.setAttribute("type", "text");
     description_input.setAttribute("placeholder", "Add a description...");
     description_input.id = "todo-description";
-    description_input.required = true;
     form.appendChild(description_input);
 
     const due_date_label = document.createElement("label");
@@ -85,10 +84,18 @@ function createModal(modalController) {
     const submitButton = document.createElement("input");
     submitButton.setAttribute("type", "submit");
     form.append(cancelButton, submitButton);
-
+    window.onclick = function (event) {
+        if (event.target == modal_container || event.target == modal) {
+            modal_container.style.display = "none";
+        }
+    };
+    const addTaskBtn = document.querySelector(".btn-add-task");
+    addTaskBtn.addEventListener("click", () => {
+        modal_container.style.display = "block";
+    })
     form.onsubmit = (event) => {
         event.preventDefault();
-        modalController.addInboxTask(
+        inboxController.addInboxTask(
             title_input.value.trim(),
             description_input.value.trim(),
             due_date_input.value,
@@ -101,9 +108,9 @@ function createModal(modalController) {
     };
     return modal_container;
 }
-function loadAddTODO(modalController) {
+function loadAddTODO(inboxController) {
     const body = document.querySelector("body");
-    const modal = createModal(modalController);
+    const modal = createModal(inboxController);
     body.appendChild(modal);
 }
 
