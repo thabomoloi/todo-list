@@ -3,3 +3,4 @@ function Project(projectName, todos = []) {
     const tasks = todos;
     return { name, tasks };
 }
+export default Project;
