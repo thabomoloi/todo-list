@@ -1,23 +1,25 @@
 import { sub } from "date-fns";
 
 function createModal() {
+    const modal_container = document.createElement("div");
+    modal_container.className = "todo-modal-container";
+
     const modal = document.createElement("section");
     modal.classList.add("modal");
     modal.id = "todo-modal";
-    // modal.style.display = "none";
+    modal_container.appendChild(modal);
 
     const content = document.createElement("div");
     content.classList.add("modal-content");
     modal.appendChild(content);
 
     const modal_title = document.createElement("h1");
-    modal_title.innerText = "Add New Todo";
+    modal_title.innerText = "Add New Task";
     modal_title.classList.add("modal-title");
     content.appendChild(modal_title);
 
     const form = document.createElement("form");
-    form.classList.add("form");
-    form.onsubmit = () => { modal.style.display = "none" };
+    form.classList.add("task-form");
     content.appendChild(form);
 
     const title_label = document.createElement("label");
@@ -77,17 +79,15 @@ function createModal() {
     priority_input.append(low, medium, high);
 
     const cancelButton = document.createElement("button");
-    cancelButton.id = "cancel-button";
     cancelButton.innerText = "Cancel";
     cancelButton.addEventListener("click", (e) => {
         e.preventDefault();
-        modal.style.display = "none";
+        modal_container.style.display = "none";
     });
     const submitButton = document.createElement("input");
-
     submitButton.setAttribute("type", "submit");
     form.append(cancelButton, submitButton);
-    return modal;
+    return modal_container;
 }
 function loadAddTODO() {
     const body = document.querySelector("body");
