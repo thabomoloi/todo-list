@@ -202,6 +202,7 @@ section nav{
     padding: 0;
     margin: 0;
     border: none;
+    color: inherit;
 }
 .task-view .priority-color {
     display: block;
@@ -224,7 +225,7 @@ section nav{
     display: flex;
     flex-direction: column;
     gap: 1em;
-    padding: 2em;
+    padding: 2em 3em;
 }
 #content .btn-add-task {
     margin-left: auto;
@@ -247,4 +248,16 @@ section nav{
 }
 span.task-due-date {
     width: 6em;
+}
+div.done-task {
+    text-decoration: line-through 2px solid black;
+}
+div.task-due-date-passed {
+    color: rgb(75, 75, 75);
+}
+div.done-task.task-due-date-passed{
+    text-decoration: line-through 2px solid rgb(75, 75, 75);
+}
+#content .task-view .task-due-date-passed input[type="checkbox"] {
+    border: 2px solid rgb(75, 75, 75);
 }
