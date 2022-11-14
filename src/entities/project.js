@@ -1,5 +1,5 @@
-function Project(taskName, todos = []) {
-    const name = taskName;
+function Project(projectName, todos = []) {
+    const name = projectName;
     const tasks = todos;
     return { name, tasks };
 }
