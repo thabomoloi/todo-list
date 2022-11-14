@@ -4,7 +4,7 @@ import Todo from "../entities/ToDo";
 import TodoList from "../entities/todoList";
 
 const TodoStorage = (() => {
-    const todo = localStorage.getItem("todoList");
+    var todo = localStorage.getItem("todoList");
     var inbox;
     var projects;
     if (todo != null) {
@@ -22,6 +22,8 @@ const TodoStorage = (() => {
 
     const save = (todoList) => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
+        inbox = todoList.inbox;
+        projects = todoList.projects;
     }
     return { getInbox, getProjects, save };
 })();
