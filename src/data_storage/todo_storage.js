@@ -5,16 +5,12 @@ import TodoList from "../entities/todoList";
 
 const TodoStorage = (() => {
     var todo = localStorage.getItem("todoList");
-    var inbox;
-    var projects;
+    var inbox = Inbox();
+    var projects = [];
     if (todo != null) {
         const todoList = JSON.parse(todo);
         inbox = todoList.inbox;
         projects = todoList.projects;
-    }
-    else {
-        inbox = Inbox();
-        projects = [];
     }
 
     const getProjects = () => projects;
