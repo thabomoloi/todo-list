@@ -1,4 +1,5 @@
-import { sub } from "date-fns";
+import { format } from "date-fns";
+import addInboxTask from "../app_logic/inbox_controller";
 
 function createModal() {
     const modal_container = document.createElement("div");
@@ -87,6 +88,20 @@ function createModal() {
     const submitButton = document.createElement("input");
     submitButton.setAttribute("type", "submit");
     form.append(cancelButton, submitButton);
+
+    form.onsubmit = (event) => {
+        event.preventDefault();
+        addInboxTask(
+            title_input.value.trim(),
+            description_input.value.trim(),
+            due_date_input.value,
+            priority_input.value
+        );
+        title_input.value = "";
+        due_date_input.value = "";
+        description_input.value = "";
+        priority_input.value = "";
+    };
     return modal_container;
 }
 function loadAddTODO() {
