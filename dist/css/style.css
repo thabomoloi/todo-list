@@ -203,11 +203,19 @@ section nav{
     margin: 0;
     border: none;
 }
-.task-view .priority-color.medium {
+.task-view .priority-color {
     display: block;
     width: 1.5em;
     height: 1.5em;
+}
+.task-view .priority-color.high{
     background-color: red;
+}
+.task-view .priority-color.medium{
+    background-color: yellow;
+}
+.task-view .priority-color.low{
+    background-color: green;
 }
 .task-view div label {
     width: 15em;
@@ -236,4 +244,7 @@ section nav{
     width: 1.2em;
     height: 1.2em;
     border: 2px solid black;
+}
+span.task-due-date {
+    width: 6em;
 }
