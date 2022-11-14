@@ -1,6 +1,5 @@
 function Inbox(todos = []) {
-    const name = "inbox";
     const tasks = todos;
-    return { name, tasks };
+    return { tasks };
 }
 export default Inbox;
