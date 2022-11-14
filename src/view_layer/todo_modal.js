@@ -92,10 +92,11 @@ function createModal(inboxController) {
     const addTaskBtn = document.querySelector(".btn-add-task");
     addTaskBtn.addEventListener("click", () => {
         modal_container.style.display = "block";
-    })
+        inboxController.setOperation("add");
+    });
     form.onsubmit = (event) => {
         event.preventDefault();
-        inboxController.addInboxTask(
+        inboxController.dataMaintenance(
             title_input.value.trim(),
             description_input.value.trim(),
             due_date_input.value,
