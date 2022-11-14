@@ -42,14 +42,18 @@ class InboxController {
                 const title = document.createElement("label");
                 title.setAttribute("for", checkbox.id);
                 title.innerHTML = `
-                    <div class="task-title">${element.title}</div>
+                    <h4 class="task-title">${element.title}</h4>
                     <div class="element-description">${element.description}</div>`;
                 task.appendChild(title)
 
                 const priorityColor = document.createElement("span")
-                priorityColor.id = "priority-color";
-                priorityColor.className = element.priority;
+                priorityColor.classList.add("priority-color", element.priority);
                 task.appendChild(priorityColor);
+
+                const date_label = document.createElement("span");
+                date_label.classList.add("task-due-date");
+                date_label.innerText = element.dueDate;
+                task.append(date_label);
 
                 const editButton = document.createElement("button");
                 editButton.id = `${element.id}-edit-button`;
