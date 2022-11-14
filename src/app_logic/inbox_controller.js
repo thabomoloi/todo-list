@@ -5,7 +5,8 @@ import Inbox from "../entities/inbox";
 import { format, compareAsc } from "date-fns";
 class InboxController {
     constructor() {
-
+        this.operation = "edit";
+        this.editID = "";
     }
     removeInbox(task) {
         const tasks = this.getInbox().tasks.filter(item => item.id != task.id);
@@ -24,7 +25,12 @@ class InboxController {
     saveToStorage(todoList) {
         return TodoStorage.save(todoList);
     }
+    setOperation(operation) {
+        this.operation = operation;
+    }
     editTask(task) {
+        this.operation = "edit";
+        this.editID = task.id;
         const container = document.querySelector(".todo-modal-container");
 
         if (container != null) {
@@ -40,6 +46,7 @@ class InboxController {
             dueDate.value = task.dueDate;
             const priority = document.querySelector(".todo-modal-container #priority");
             priority.value = task.priority;
+            this.editID = task.id;
         }
     }
     updateInbox() {
@@ -114,6 +121,34 @@ class InboxController {
         const todoList = TodoList(inboxToDo, projects);
         this.saveToStorage(todoList);
         this.updateInbox();
+    }
+    updateInboxTask(title, description, dueDate, priority, done) {
+        const tasks = this.getInbox().tasks;
+        const projects = this.getAllProjects();
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].id == this.editID) {
+                tasks[i].title = title;
+                tasks[i].description = description;
+                tasks[i].dueDate = dueDate;
+                tasks[i].priority = priority;
+                tasks[i].done = done;
+                break;
+            }
+        }
+        const todoList = TodoList(Inbox(tasks), projects);
+        this.saveToStorage(todoList);
+        this.editID = "";
+        this.updateInbox();
+    }
+    dataMaintenance(title, description, dueDate, priority, done) {
+        if (this.operation == "add") {
+            this.editID = "";
+            this.addInboxTask(title, description, dueDate, priority, done);
+        }
+        else {
+            this.updateInboxTask(title, description, dueDate, priority, done);
+        }
+
     }
 }
 export default InboxController;
