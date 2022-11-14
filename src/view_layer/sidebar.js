@@ -11,6 +11,7 @@ const getTasks = () => {
     // Inbox
     const inbox = document.createElement("button");
     inbox.className = "nav-item";
+    inbox.classList.add("active-side-menu-btn");
     inbox.innerHTML = `<i class="fa-solid fa-inbox"></i><span>Inbox</span>`;
 
     // Today
@@ -33,7 +34,10 @@ const getTasks = () => {
     priorityList.classList.add("subnav", "nav-items");
 
     taskList.append(inbox, today, upcoming, priority)
-
+    priority.addEventListener("click", () => {
+        const display = priorityList.style.display;
+        priorityList.style.display = (display != "none") ? "none" : "block";
+    })
     // high
     const high = document.createElement("button");
     high.classList.add("nav-item", "priority-item");
