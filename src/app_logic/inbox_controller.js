@@ -1,7 +1,7 @@
 import TodoList from "../entities/todoList";
 import Todo from "../entities/ToDo";
 import TodoStorage from "../data_storage/todo_storage";
-
+import { format } from "date-fns";
 class InboxController {
     constructor() {
 
@@ -52,7 +52,7 @@ class InboxController {
 
                 const date_label = document.createElement("span");
                 date_label.classList.add("task-due-date");
-                date_label.innerText = element.dueDate;
+                date_label.innerText = format(Date.parse(element.dueDate), "d MMM yyyy");
                 task.append(date_label);
 
                 const editButton = document.createElement("button");
