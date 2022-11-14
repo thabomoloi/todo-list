@@ -105,6 +105,7 @@ function createModal(inboxController) {
         due_date_input.value = "";
         description_input.value = "";
         priority_input.value = "low";
+        modal_container.style.display = "none";
     };
     return modal_container;
 }
