@@ -23,6 +23,7 @@ const TodoStorage = (() => {
     const save = (todoList) => {
         localStorage.setItem("todoList", JSON.stringify(todoList));
     }
+    return { getInbox, getProjects, save };
 })();
 
 export default TodoStorage;
