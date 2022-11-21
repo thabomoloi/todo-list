@@ -2,6 +2,9 @@ import Inbox from "../entities/inbox";
 
 class TodoStorage {
 
+    /**
+     * Creates an instance of TodoStorage
+     */
     constructor() {
         // Get todo list
         var todo = localStorage.getItem("todoList");
@@ -15,5 +18,18 @@ class TodoStorage {
             this.projects = this.todoList.projects; // read projects
         }
     }
-    
+    /**
+     * Gets the projects of the todo list
+     * @returns Projects
+     */
+    getProjects() {
+        return this.projects;
+    }
+    /**
+     * Gets the inbox of the todo list.
+     * @returns Inbox
+     */
+    getInbox() {
+        return this.inbox;
+    }
 }
