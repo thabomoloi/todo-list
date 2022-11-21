@@ -1,4 +1,5 @@
 import Inbox from "../entities/inbox";
+import TodoList from "../entities/todoList";
 
 class TodoStorage {
 
@@ -32,14 +33,20 @@ class TodoStorage {
     getInbox() {
         return this.inbox;
     }
+    setInbox(inbox) {
+        this.inbox = inbox;
+    }
+    setProjects(projects) {
+        this.projects = projects;
+        this.saveTodoList();
+    }
     /**
-     * Saves todo list to local storage.
-     * @param {*} todoList 
+     * Commits the changes in the storages
      */
-    saveTodoList(todoList) {
+    commit() {
+        const todoList = TodoList(this.inbox, this.projects);
         localStorage.setItem("todoList", JSON.stringify(todoList));
-        this.inbox = todoList.inbox;
-        this.projects = todoList.projects;
+
     }
 }
 export default TodoStorage;
