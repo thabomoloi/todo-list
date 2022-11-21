@@ -35,9 +35,11 @@ class TodoStorage {
     }
     setInbox(inbox) {
         this.inbox = inbox;
+        this.commit();
     }
     setProjects(projects) {
         this.projects = projects;
+        this.commit();
     }
     /**
      * Commits the changes in the storages
