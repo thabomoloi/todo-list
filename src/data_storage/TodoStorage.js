@@ -38,7 +38,6 @@ class TodoStorage {
     }
     setProjects(projects) {
         this.projects = projects;
-        this.saveTodoList();
     }
     /**
      * Commits the changes in the storages
@@ -46,7 +45,6 @@ class TodoStorage {
     commit() {
         const todoList = TodoList(this.inbox, this.projects);
         localStorage.setItem("todoList", JSON.stringify(todoList));
-
     }
 }
 export default TodoStorage;
