@@ -32,4 +32,14 @@ class TodoStorage {
     getInbox() {
         return this.inbox;
     }
+    /**
+     * Saves todo list to local storage.
+     * @param {*} todoList 
+     */
+    saveTodoList(todoList) {
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+        this.inbox = todoList.inbox;
+        this.projects = todoList.projects;
+    }
 }
+export default TodoStorage;
