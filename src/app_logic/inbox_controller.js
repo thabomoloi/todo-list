@@ -3,7 +3,6 @@ import InboxStorage from "../data_storage/InboxStorage";
 class InboxController {
     constructor() {
         this.operation = "view";
-        this.editID = "";
         this.inboxStorage = new InboxStorage();
     }
     getAllTasks() {
