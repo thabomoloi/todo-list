@@ -1,16 +1,17 @@
 import loadHeader from "./view_layer/header";
 import loadSidebar from "./view_layer/sidebar";
-import loadAddTODO from "./view_layer/todo_modal";
-import loadInbox from "./view_layer/inbox";
+import InboxView from "./view_layer/inbox";
+import TaskForm from "./view_layer/task_form";
 import InboxController from "./app_logic/inbox_controller"
 
 
 function loadPage() {
-    const inboxController = new InboxController();
     loadHeader();
     loadSidebar();
-    loadInbox(inboxController);
-    inboxController.updateInbox();
-    loadAddTODO(inboxController);
+
+    const inboxController = new InboxController();
+    const inboxTaskForm = new TaskForm(inboxController);
+    const inboxView = new InboxView(inboxController, inboxTaskForm);
+
 }
 loadPage();
