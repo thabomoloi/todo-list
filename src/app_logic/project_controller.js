@@ -6,8 +6,8 @@ class ProjectController {
         this.projectStorage = new ProjectStorage();
         this.project = this.projectStorage.getProject(this.projectID);
     }
-    getProjectName() {
-        this.project.name;
+    getProject() {
+        this.project;
     }
     getAllTasks() {
         return this.projectStorage.getAllProjectTasks(this.projectID);

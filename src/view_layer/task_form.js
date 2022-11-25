@@ -1,9 +1,10 @@
 import InboxController from "../app_logic/inbox_controller";
+import ProjectController from "../app_logic/project_controller";
 
 class TaskForm {
     /**
      * Creates an instance of task form
-     * @param {InboxController} controller  
+     * @param {InboxController | ProjectController} controller  
      */
     constructor(controller) {
         this.controller = controller;
