@@ -43,10 +43,11 @@ class InboxStorage {
     updateTask(id, title, description, dueDate, priority, done) {
         for (let i = 0; i < this.inbox.tasks.length; i++) {
             if (this.inbox.tasks[i].id == id) {
-                this.inbox.task[i] = Todo(title, description, dueDate, priority, done);
+                this.inbox.tasks[i] = Todo(id, title, description, dueDate, priority, done);
                 break;
             }
         }
+
         this.todoStorage.setInbox(this.inbox);
     }
     /**
@@ -54,7 +55,7 @@ class InboxStorage {
      * @param {*} id 
      */
     removeTask(id) {
-        const tasks = this.getAllTasks.filter(item => item.id != id);
+        const tasks = this.getAllTasks().filter(item => item.id != id);
         this.inbox = Inbox(tasks);
         this.todoStorage.setInbox(this.inbox);
     }
