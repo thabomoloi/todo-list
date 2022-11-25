@@ -1,6 +1,4 @@
-function Project(projectName, todos = []) {
-    const name = projectName;
-    const tasks = todos;
-    return { name, tasks };
+function Project(id, name, tasks = []) {
+    return { id, name, tasks };
 }
 export default Project;
