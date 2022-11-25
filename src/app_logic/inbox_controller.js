@@ -2,7 +2,6 @@ import InboxStorage from "../data_storage/InboxStorage";
 
 class InboxController {
     constructor() {
-        this.operation = "view";
         this.inboxStorage = new InboxStorage();
     }
     getAllTasks() {
