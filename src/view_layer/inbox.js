@@ -17,6 +17,7 @@ class InboxView {
     }
     createInbox() {
         const content = document.querySelector("#content");
+        content.innerHTML = ``;
         // Inbox heading
         const heading = document.createElement("h1");
         heading.innerText = "Inbox";
