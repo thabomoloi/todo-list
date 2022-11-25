@@ -4,6 +4,10 @@ class ProjectController {
     constructor(projectID) {
         this.projectID = projectID;
         this.projectStorage = new ProjectStorage();
+        this.project = this.projectStorage.getProject(this.projectID);
+    }
+    getProjectName() {
+        this.project.name;
     }
     getAllTasks() {
         return this.projectStorage.getAllProjectTasks(this.projectID);

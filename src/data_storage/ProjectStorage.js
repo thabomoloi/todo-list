@@ -7,6 +7,13 @@ class ProjectStorage {
         this.todoStorage = new TodoStorage();
         this.projects = this.todoStorage.getProjects();
     }
+    getProject(id) {
+        for (let i = 0; i < this.projects.length; i++) {
+            if (this.projects[i].id == id) {
+                return this.projects[i];
+            }
+        }
+    }
     getAllProjects() {
         return this.projects;
     }
