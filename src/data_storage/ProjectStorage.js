@@ -10,7 +10,8 @@ class ProjectStorage {
     getAllProjects() {
         return this.projects;
     }
-    addProject(id, name) {
+    addProject(name) {
+        const id = `project-${this.projects.length}`;
         this.projects.push(Project(id, name));
         this.todoStorage.setProjects(this.projects);
     }
@@ -36,9 +37,10 @@ class ProjectStorage {
         }
         return [];
     }
-    addProjectTask(projectID, taskID, title, description, dueDate, priority, done) {
+    addProjectTask(projectID, title, description, dueDate, priority, done) {
         for (let i = 0; i < this.projects.length; i++) {
             if (this.projects[i].id == projectID) {
+                const taskID = `${this.projects[i].id}-${this.projects[i].tasks.length}`;
                 this.projects[i].tasks.push(Todo(taskID, title, description, dueDate, priority, done));
             }
         }
