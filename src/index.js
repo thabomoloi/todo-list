@@ -1,5 +1,5 @@
 import loadHeader from "./view_layer/header";
-import loadSidebar from "./view_layer/sidebar";
+import Sidebar from "./view_layer/sidebar";
 import InboxView from "./view_layer/inbox";
 import TaskForm from "./view_layer/task_form";
 import InboxController from "./app_logic/inbox_controller"
@@ -7,7 +7,8 @@ import InboxController from "./app_logic/inbox_controller"
 
 function loadPage() {
     loadHeader();
-    loadSidebar();
+
+    new Sidebar();
 
     const inboxController = new InboxController();
     const inboxTaskForm = new TaskForm(inboxController);
