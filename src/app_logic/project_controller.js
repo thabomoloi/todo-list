@@ -7,7 +7,7 @@ class ProjectController {
         this.project = this.projectStorage.getProject(this.projectID);
     }
     getProject() {
-        this.project;
+        return this.project;
     }
     getAllTasks() {
         return this.projectStorage.getAllProjectTasks(this.projectID);
