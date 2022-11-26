@@ -1,10 +1,14 @@
 import { add } from "date-fns";
 import ProjectStorage from "../data_storage/ProjectStorage";
 import ProjectForm from "./project_form";
+import ProjectView from "./projectView";
+import ProjectController from "../app_logic/project_controller";
+import TaskForm from "./task_form";
 
 class Sidebar {
     constructor() {
         this.projectForm = new ProjectForm();
+        this.taskForm = new TaskForm();
         this.load();
     }
     createTaskMenu() {
@@ -85,6 +89,12 @@ class Sidebar {
             projButton.className = "nav-item";
             projButton.id = element.id;
             projButton.innerHTML = element.name;
+
+            projButton.addEventListener("click", () => {
+                const projectController = new ProjectController(element.id);
+                const view = new ProjectView(element.id, projectController, this.taskForm);
+            });
+
             this.projectList.appendChild(projButton);
         });
         this.add_project = document.createElement("button");
