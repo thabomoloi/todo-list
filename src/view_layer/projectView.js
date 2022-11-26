@@ -22,7 +22,7 @@ class ProjectView {
         content.innerHTML = ``;
         // Project heading
         const heading = document.createElement("h1");
-        heading.innerText = this.project;
+        heading.innerText = this.project.name;
         heading.classList.add("heading");
         content.appendChild(heading);
         // Project content
