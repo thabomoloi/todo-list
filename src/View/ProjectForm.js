@@ -43,7 +43,12 @@ class ProjectForm {
         this.container.style.display = "block";
     }
     close() {
+        this.clearFields();
         this.container.style.display = "none";
+    }
+    clearFields() {
+        const nameInput = document.querySelector("form input#project-name");
+        nameInput.value = "";
     }
     addEventsListeners() {
         // Close modal when window is clicked
@@ -59,6 +64,8 @@ class ProjectForm {
             event.preventDefault();
             this.close();
         });
+
+
 
 
     }
