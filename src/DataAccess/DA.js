@@ -5,12 +5,13 @@ class DA {
     constructor() {
         this.todoList = localStorage.getItem("TODO");
 
-        const objects = [];
+        var objects = [];
         if (this.todoList)
             objects = JSON.parse(this.todoList);
 
-        this.projects = [new Project()];
-        this.projects.pop();
+        this.projects = [new Project("project-1", "Inbox")];
+        if (objects.length != 0)
+            this.projects.pop();
 
         objects.forEach(project => {
             const tasks = [];
