@@ -24,7 +24,7 @@ class ProjectForm {
 
         this.form.innerHTML = `
             <label for="project-name">Project name</label>
-            <input type="text" id="project-name" name="project-name">
+            <input type="text" id="project-name" name="project-name" required>
             <button type="submit" id="submitButton">Submit</button>
         `;
 
