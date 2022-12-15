@@ -7,6 +7,7 @@ class ProjectForm {
         /******** Elements ************/
         // Modal Container
         this.container = document.createElement("div");
+        this.load();
         this.container.id = "project-form";
         this.container.classList.add("modal-container");
         // Modal
@@ -31,6 +32,7 @@ class ProjectForm {
                 <button type="submit" id="submitButton">Submit</button>
             </div>
         `;
+        this.addEventsListeners();
 
     }
     load() {
@@ -42,6 +44,23 @@ class ProjectForm {
     }
     close() {
         this.container.style.display = "none";
+    }
+    addEventsListeners() {
+        // Close modal when window is clicked
+        window.addEventListener("click", event => {
+            if (event.target == this.modal) {
+                this.close();
+            }
+        });
+
+        // Close modal on cancel
+        const cancelButton = document.querySelector("#project-form #cancelButton");
+        cancelButton.addEventListener("click", event => {
+            event.preventDefault();
+            this.close();
+        });
+
+
     }
 }
 
