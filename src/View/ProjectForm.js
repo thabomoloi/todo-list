@@ -7,6 +7,8 @@ class ProjectForm {
      */
     constructor(projectController) {
         this.mode = { ADD: 0, Edit: 1 };
+        this.operation = 0;
+
         // Form's project controller
         this.projectController = projectController;
 
@@ -33,12 +35,14 @@ class ProjectForm {
 
         this.form.innerHTML = `
             <label for="project-name">Project name</label>
-            <input type="text" id="project-name" name="project-name" required>
+            <input type="text" id="project-name" required>
             <div class="form-butttons">
                 <button id="cancelButton">Cancel</button>
                 <button type="submit" id="submitButton">Submit</button>
             </div>
         `;
+        this.nameInput = document.querySelector("form input#project-name");
+
         this.addEventsListeners();
 
     }
@@ -48,8 +52,11 @@ class ProjectForm {
     }
     /**
      * @param {number} operation 
+     * @param {Project} project
      */
-    open(operation) {
+    open(operation, project = null) {
+        this.project = project;
+        this.operation = operation;
         const heading = document.querySelector("#project-form #project-heading");
         heading.innerText = (operation == this.mode.ADD) ? "Add new project" : "Edit project";
         this.container.style.display = "block";
@@ -59,8 +66,7 @@ class ProjectForm {
         this.container.style.display = "none";
     }
     clearFields() {
-        const nameInput = document.querySelector("form input#project-name");
-        nameInput.value = "";
+        this.nameInput.value = "";
     }
     addEventsListeners() {
         // Close modal when window is clicked
@@ -77,8 +83,16 @@ class ProjectForm {
             this.close();
         });
 
-
-
+        this.form.onsubmit = (event) => {
+            const projectName = this.nameInput.value;
+            if (this.operation == this.mode.ADD)
+                this.projectController.addProject(projectName);
+            else {
+                this.project.name = projectName;
+                this.projectController.updateProject(this.project);
+            }
+            this.close();
+        }
 
     }
 }
