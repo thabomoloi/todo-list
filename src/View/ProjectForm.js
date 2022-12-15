@@ -20,6 +20,7 @@ class ProjectForm {
         this.modal.appendChild(this.content);
         // Form
         this.form = document.createElement("form");
+        this.form.autocomplete = "off";
         this.content.append(this.form);
 
         this.form.innerHTML = `
