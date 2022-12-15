@@ -26,13 +26,22 @@ class ProjectForm {
         this.form.innerHTML = `
             <label for="project-name">Project name</label>
             <input type="text" id="project-name" name="project-name" required>
-            <button type="submit" id="submitButton">Submit</button>
+            <div class="form-butttons">
+                <button id="cancelButton">Cancel</button>
+                <button type="submit" id="submitButton">Submit</button>
+            </div>
         `;
 
     }
     load() {
         const formSection = document.querySelector("#form-section");
         formSection.appendChild(this.container);
+    }
+    open() {
+        this.container.style.display = "block";
+    }
+    close() {
+        this.container.style.display = "none";
     }
 }
 
