@@ -9,7 +9,8 @@ class DA {
         if (todoList)
             objects = JSON.parse(this.todoList);
 
-        this.projects = [];
+        this.projects = [new Project()];
+        this.projects.pop();
 
         objects.forEach(project => {
             const tasks = [];
@@ -18,6 +19,10 @@ class DA {
             });
             this.projects.push(new Project(project.ID, project.name, project.tasks));
         });
+    }
+
+    allProjects() {
+        return this.projects;
     }
 
     /**
