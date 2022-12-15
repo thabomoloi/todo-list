@@ -6,7 +6,7 @@ class DA {
         this.todoList = localStorage.getItem("TODO");
 
         const objects = [];
-        if (todoList)
+        if (this.todoList)
             objects = JSON.parse(this.todoList);
 
         this.projects = [new Project()];
