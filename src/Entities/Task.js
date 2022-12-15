@@ -1,3 +1,6 @@
+/**
+ * Represents a TODO task.
+ */
 class Task {
     ID = "";
     name = "";
@@ -7,6 +10,7 @@ class Task {
     projectID = "";
 
     /**
+     * Creates a new instance of Task.
      * 
      * @param {string} ID the task's ID (unique identifier)
      * @param {string} name name of the task
@@ -24,3 +28,5 @@ class Task {
         this.projectID = projectID;
     }
 }
+
+export default Task;
