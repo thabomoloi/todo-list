@@ -196,8 +196,14 @@ div.done-task.task-due-date-passed{
         border: none;
         width: 100%;
         height: 100%;
-        background-color: rgb(245, 245, 245);
+        background-color: #003e5b;;
         position: absolute;
         z-index: 1000;
     }
+    #sidemenu {
+        color: whitesmoke;
+    }
+    #sidemenu h2 {
+        border-bottom: 3px solid whitesmoke;
+    }    
 }
