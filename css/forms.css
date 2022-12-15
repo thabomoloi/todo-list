@@ -47,8 +47,12 @@ button {
     padding: .25em 1.5em;
     border-radius: 5px;
 }
-#submitButton {
+#submitButton, #cancelButton {
     background-color: #01233a;
     border: 2px solid #01233a;
     color: white;
+}
+form .form-butttons {
+    display: flex;
+    gap: 2em;
 }
