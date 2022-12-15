@@ -1,0 +1,53 @@
+.modal-container {
+    /*display: none;*/
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    z-index: 1;
+    padding: 2em;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+}
+.modal-content {
+    width: min(25em, 90vw);
+    padding: 1.5em 3em;
+    background-color: #00c2ab;
+    border-radius: 20px;
+}
+.modal-content h1 {
+    margin-bottom: 1em;
+    text-align: center;
+}
+label, input {
+    display: block;
+}
+.modal-content button,  label, input,  select {
+    font-size: inherit;
+    font-family: inherit;
+}
+input {
+    margin-bottom: 1em;
+    border-radius: 5px;
+    padding: 7.5px;
+    border: 1px solid #14b;
+    width: 100%;
+}
+button {
+    padding: .25em 1.5em;
+    border-radius: 5px;
+}
+#submitButton {
+    background-color: #01233a;
+    border: 2px solid #01233a;
+    color: white;
+}
