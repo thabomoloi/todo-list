@@ -7,6 +7,18 @@ class ProjectController {
         this.projectStorage = new DA();
         this.projects = this.projectStorage.allProjects();
     }
+    allProjects() {
+        return this.projectStorage.allProjects();
+    }
+    allTasks() {
+        var tasks = [new Task()];
+        tasks.pop();
+
+        this.projectStorage.allProjects().forEach(project => {
+            tasks = Object.assign([], tasks, project.tasks);
+        });
+        return tasks;
+    }
     /**
      * Adds a new project
      * @param {string} name 
