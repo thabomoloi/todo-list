@@ -1,7 +1,16 @@
+import ProjectForm from "./ProjectForm";
+
 class SidebarView {
-    constructor() {
+    /**
+     * 
+     * @param {ProjectForm} projectForm 
+     */
+    constructor(projectForm) {
+        this.projectForm = projectForm;
+
         /******** Elements *********/
         this.sidebarContainer = document.createElement("div");
+        this.load();
         this.sidebarContainer.classList.add("sidebar-container");
 
         // Tasks menu
@@ -26,10 +35,19 @@ class SidebarView {
             <div id="project-menu" class="nav-items"><div>
             <button id="add-project" style="width:100%";><i class="fa-solid fa-plus"></i> Add project</button>
         `;
+        this.addeventsListeners();
+
     }
     load() {
         const sidebar = document.querySelector("#sidemenu");
         sidebar.appendChild(this.sidebarContainer);
+    }
+    addeventsListeners() {
+        // 
+        const addProjectBtn = document.querySelector(".project-container button#add-project");
+        addProjectBtn.addEventListener("click", event => {
+            this.projectForm.open();
+        });
     }
 }
 
