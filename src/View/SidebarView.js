@@ -1,11 +1,14 @@
 import ProjectForm from "./ProjectForm";
+import ProjectController from "../AppLogic/ProjectController";
 
 class SidebarView {
     /**
      * 
      * @param {ProjectForm} projectForm 
+     * @param {ProjectController} projectController
      */
-    constructor(projectForm) {
+    constructor(projectForm, projectController) {
+        this.projectController = projectController;
         this.projectForm = projectForm;
 
         /******** Elements *********/
@@ -32,9 +35,23 @@ class SidebarView {
         this.sidebarContainer.appendChild(this.projects);
         this.projects.innerHTML = `
             <h2>Projects</h2>
-            <div id="project-menu" class="nav-items"><div>
+            <div id="project-menu" class="nav-items"></div>
             <button id="add-project" style="width:100%";><i class="fa-solid fa-plus"></i> Add project</button>
         `;
+
+        this.projectMenu = document.querySelector("#sidemenu #project-menu");
+        if (this.projectMenu) {
+            projectController.allProjects().forEach(element => {
+                const projButton = document.createElement("button");
+                if (element.name != "Inbox") {
+                    projButton.innerHTML = `<i class="fa-solid fa-list-check"></i>${element.name}`;
+                    projButton.id = element.id;
+                    this.projectMenu.appendChild(projButton);
+                    //===================
+                }
+
+            });
+        }
         this.addeventsListeners();
 
     }
