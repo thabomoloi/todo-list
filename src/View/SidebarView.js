@@ -46,7 +46,7 @@ class SidebarView {
         // 
         const addProjectBtn = document.querySelector(".project-container button#add-project");
         addProjectBtn.addEventListener("click", event => {
-            this.projectForm.open();
+            this.projectForm.open(0);
         });
     }
 }
