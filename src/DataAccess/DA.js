@@ -59,7 +59,7 @@ class DA {
     }
 
     commit() {
-        localStorage.setItem("TOD", JSON.stringify(this.projects));
+        localStorage.setItem("TODO", JSON.stringify(this.projects));
     }
 }
 
