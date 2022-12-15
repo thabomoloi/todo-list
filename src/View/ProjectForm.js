@@ -1,6 +1,12 @@
+import ProjectController from "../AppLogic/ProjectController";
+
 class ProjectForm {
-    constructor(projectController, mode) {
-        mode = { ADD: 1, Edit: 2 };
+    /**
+     * 
+     * @param {ProjectController} projectController 
+     */
+    constructor(projectController) {
+        this.mode = { ADD: 0, Edit: 1 };
         // Form's project controller
         this.projectController = projectController;
 
@@ -17,7 +23,8 @@ class ProjectForm {
         // Content
         this.content = document.createElement("div");
         this.content.classList.add("modal-content");
-        this.content.innerHTML = (mode.ADD) ? "<h1>Add new project</h1>" : "<h1>Edit project</h1>";
+        this.content.innerHTML = `<h1 id="project-heading">Add new project</h1>`;
+
         this.modal.appendChild(this.content);
         // Form
         this.form = document.createElement("form");
@@ -39,7 +46,12 @@ class ProjectForm {
         const formSection = document.querySelector("#form-section");
         formSection.appendChild(this.container);
     }
-    open() {
+    /**
+     * @param {number} operation 
+     */
+    open(operation) {
+        const heading = document.querySelector("#project-form #project-heading");
+        heading.innerText = (operation == this.mode.ADD) ? "Add new project" : "Edit project";
         this.container.style.display = "block";
     }
     close() {
