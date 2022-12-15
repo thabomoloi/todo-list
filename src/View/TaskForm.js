@@ -40,7 +40,10 @@ class TaskForm {
                <option value="medium">Medium</option>
                <option value="high">High</option>
             </select>
-            <button type="submit" id="submitButton">Submit</button>
+            <div class="form-butttons">
+                <button id="cancelButton">Cancel</button>
+                <button type="submit" id="submitButton">Submit</button>
+            </div>
         `;
 
     }
