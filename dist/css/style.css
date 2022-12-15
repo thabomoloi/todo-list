@@ -1,4 +1,5 @@
 @import url("../fontawesome/css/all.css");
+@import url("./forms.css");
 
 :root {
     --font-size: calc(1em + 0.25vw);
@@ -108,40 +109,8 @@ section nav{
     color: white;
     font-weight: 600;
 }
-.todo-modal-container {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    z-index: 1;
-    padding: 2em;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.6);
-}
-.modal {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;    
-}
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: min(25em, 90vw);
-    padding: 1.5em;
-    background-color: #14b8a6;
-    font-weight: 600;
-    border-radius: 20px;
-}
-.modal-content button,  label, input,  select {
-    font-size: inherit;
-    font-family: inherit;
-}
+
+
 .task-form {
     display: grid;
     gap: 0.5em;
