@@ -35,7 +35,7 @@ class ProjectForm {
 
         this.form.innerHTML = `
             <label for="project-name">Project name</label>
-            <input type="text" id="project-name" required>
+            <input type="text" id="project-name" minlentgth="3" maxlength="20" required>
             <div class="form-butttons">
                 <button id="cancelButton">Cancel</button>
                 <button type="submit" id="submitButton">Submit</button>
