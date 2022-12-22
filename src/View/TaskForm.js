@@ -4,7 +4,7 @@ import Task from "../Entities/Task";
 class TaskForm {
     /**
      * 
-     * @param {ProjectController} projectController dd
+     * @param {ProjectController} projectController 
      */
     constructor(projectController) {
         this.mode = { ADD: 0, Edit: 1 };
@@ -67,7 +67,7 @@ class TaskForm {
     }
     /**
      * @param {number} operation 
-     * @param {Task} project
+     * @param {Task} task
      */
     open(operation, task = null) {
         this.task = task;
@@ -75,6 +75,13 @@ class TaskForm {
         const heading = document.querySelector("#task-form #task-heading");
         heading.innerText = (operation == this.mode.ADD) ? "Add new task" : "Edit task";
         this.container.style.display = "block";
+
+        if (operation == this.mode.Edit && task) {
+            this.taskNameInput.value = task.name;
+            this.taskDescriptionInput.value = task.description;
+            this.taskDueDateInput.value = task.dueDate;
+            this.taskPrioritySelect.value = task.priority;
+        }
     }
     close() {
         this.clearFields();
@@ -102,8 +109,17 @@ class TaskForm {
         });
 
         this.form.onsubmit = (event) => {
-            if (this.operation == this.mode.ADD)
-                this.projectController.addTask(this.taskNameInput.value, this.taskDescriptionInput.value, this.taskDueDateInput.value, this.taskPrioritySelect.value);
+            if (this.operation == this.mode.ADD) {
+                const projID = document.querySelector("#content > h1")?.id;
+                if (projID)
+                    this.projectController.addTask(
+                        projID,
+                        this.taskNameInput.value,
+                        this.taskDescriptionInput.value,
+                        this.taskDueDateInput.value,
+                        this.taskPrioritySelect.value);
+
+            }
             else {
                 this.task.name = this.taskNameInput.value;
                 this.task.description = this.taskDescriptionInput.value;
