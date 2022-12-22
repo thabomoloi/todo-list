@@ -33,9 +33,11 @@ class Project {
             counter = parseInt(lastCount);
         }
 
-        const taskID = `${ID}_task-${counter + 1}`;
-        const task = new Task(taskID, name, description, dueDate, priority, ID);
+        const taskID = `${this.ID}_task-${counter + 1}`;
+
+        const task = new Task(taskID, name, description, dueDate, priority, this.ID);
         this.tasks.push(task);
+
 
     }//=======================================================================================================================
 
