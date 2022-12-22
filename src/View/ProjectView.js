@@ -11,8 +11,15 @@ class ProjectView {
      * @param {string} projectID
      */
     constructor(taskForm, projectController, projectID) {
+        this.projectController = projectController;
         this.project = projectController.findProject(projectID);
-
+        this.loadTaskView(taskForm);
+    }
+    /**
+     * 
+     * @param {TaskForm} taskForm 
+     */
+    loadTaskView(taskForm) {
         const content = document.querySelector("main section#content");
 
         if (content && this.project) {
@@ -32,7 +39,7 @@ class ProjectView {
 
                 // Done checkboxk
                 const doneCheck = document.createElement("input");
-                doneCheck.setAttribute("type", "text");
+                doneCheck.setAttribute("type", "checkbox");
                 doneCheck.checked = task.done;
 
                 // Name and description div
@@ -52,9 +59,16 @@ class ProjectView {
                 // Operation: edit-delete
                 const editButton = document.createElement("button");
                 editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
+                editButton.onclick = (event) => {
+                    taskForm.open(1, task);
+                }
 
                 const deleteButton = document.createElement("button")
                 deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+                deleteButton.onclick = (event) => {
+                    this.projectController.removeTask(task.projectID, task.ID);
+                    this.loadTaskView();
+                }
 
                 taskDiv.append(doneCheck, nameDescr, priorityColor, dueDate, editButton, deleteButton);
             });
