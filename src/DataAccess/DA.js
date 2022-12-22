@@ -16,7 +16,7 @@ class DA {
         objects.forEach(project => {
             const tasks = [];
             project.tasks.forEach(task => {
-                tasks.push(new Task(task.ID, task.name, task.description, task.dueDate, task.priority, task.projectID))
+                tasks.push(new Task(task.ID, task.name, task.description, task.dueDate, task.priority, task.projectID, task.done));
             });
             this.projects.push(new Project(project.ID, project.name, project.tasks));
         });
