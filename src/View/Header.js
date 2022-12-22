@@ -5,7 +5,7 @@ class Header {
         if (header) {
             header.innerHTML = `
             <span></span>
-            <span class="site-name">ToDo List</span>
+            <h1 class="site-name">ToDo List</h1>
             <button class="menu-button open-menu"><i class="fa-sharp fa-solid fa-bars"></i></button>
             `;
 
