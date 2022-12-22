@@ -50,6 +50,7 @@ class Project {
                 this.tasks[i].description = task.description;
                 this.tasks[i].dueDate = task.dueDate;
                 this.tasks[i].priority = task.priority;
+                this.tasks[i].done = task.done;
                 break;
             }
         }
