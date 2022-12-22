@@ -10,6 +10,18 @@ class ProjectController {
     allProjects() {
         return this.projectStorage.allProjects();
     }
+    /**
+     * 
+     * @param {string} projID 
+     */
+    findProject(projID) {
+        var project = null;
+        for (let i = 0; i < this.projects.length; i++) {
+            if (projID == this.projects[i].ID)
+                project = this.projects[i];
+        }
+        return project;
+    }
     allTasks() {
         var tasks = [new Task()];
         tasks.pop();
@@ -59,8 +71,8 @@ class ProjectController {
      * Add task
      * @param {string} projID 
      */
-    addTask(projID, name, description, dueDate, priorit) {
-        const project = new Project();
+    addTask(projID, name, description, dueDate, priority) {
+        var project = new Project();
         this.projects.forEach(element => {
             if (projID == element.ID)
                 project = element;
@@ -73,7 +85,7 @@ class ProjectController {
      * @param {Task} task 
      */
     updateTask(task) {
-        const project = new Project();
+        var project = new Project();
         this.projects.forEach(element => {
             if (task.projectID == element.ID)
                 project = element;
@@ -87,7 +99,7 @@ class ProjectController {
      * @param {string} taskID 
      */
     removeTask(projID, taskID) {
-        const project = new Project();
+        var project = new Project();
         this.projects.forEach(element => {
             if (projID == element.ID)
                 project = element;
