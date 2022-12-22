@@ -8,6 +8,7 @@ class Task {
     dueDate = "";
     priority = "";
     projectID = "";
+    done = "";
 
     /**
      * Creates a new instance of Task.
@@ -19,13 +20,14 @@ class Task {
      * @param {string} priority the level of priority
      * @param {string} projectID the ID of the project to which the task belongs to
      */
-    constructor(ID, name, description, dueDate, priority, projectID) {
+    constructor(ID, name, description, dueDate, priority, projectID, done = false) {
         this.ID = ID;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.projectID = projectID;
+        this.done = done;
     }
 }
 
