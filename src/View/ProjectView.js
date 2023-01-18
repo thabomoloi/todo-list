@@ -1,8 +1,9 @@
 import ProjectController from "../AppLogic/ProjectController";
 import Project from "../Entities/Project";
 import Task from "../Entities/Task";
-import format from "date-fns/format";
 import TaskForm from "./TaskForm";
+import { differenceInDays, format } from "date-fns";
+import DA from "../DataAccess/DA";
 
 class ProjectView {
     /**
@@ -13,13 +14,11 @@ class ProjectView {
     constructor(taskForm, projectController, projectID) {
         this.projectController = projectController;
         this.project = projectController.findProject(projectID);
-        this.loadTaskView(taskForm);
+        this.taskForm = taskForm;
+        this.loadTaskView();
     }
-    /**
-     * 
-     * @param {TaskForm} taskForm 
-     */
-    loadTaskView(taskForm) {
+
+    loadTaskView() {
         const content = document.querySelector("main section#content");
 
         if (content && this.project) {
@@ -42,9 +41,19 @@ class ProjectView {
                 doneCheck.setAttribute("type", "checkbox");
                 doneCheck.checked = task.done;
 
+                doneCheck.onclick = () => {
+                    task.done = doneCheck.checked;
+                    this.projectController.updateTask(task);
+                    taskDiv.classList.toggle("done-task");
+                };
+
+                if (task.done)
+                    taskDiv.classList.add("done-task");
+
                 // Name and description div
                 const nameDescr = document.createElement("span");
-                nameDescr.innerHTML = `<div class="task-name">${task.name}</div><div class="descrition">${task.description}</div>`;
+                nameDescr.className = "task-name";
+                nameDescr.innerText = task.name;
 
                 // Priority Color
                 const priorityColor = document.createElement("span");
@@ -53,14 +62,21 @@ class ProjectView {
 
                 // Due date
                 const dueDate = document.createElement("span");
-                dueDate.classList.add("due-date");
+                dueDate.classList.add("task-due-date");
                 dueDate.innerText = task.dueDate;
+
+                const currentDate = format(new Date(), "yyyy/MM/dd");
+                const diffInDays = differenceInDays(new Date(currentDate), new Date(task.dueDate));
+
+                if (diffInDays > 0) {
+                    taskDiv.classList.add('task-due-date-passed');
+                }
 
                 // Operation: edit-delete
                 const editButton = document.createElement("button");
                 editButton.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
                 editButton.onclick = (event) => {
-                    taskForm.open(1, task);
+                    this.taskForm.open(1, task);
                 }
 
                 const deleteButton = document.createElement("button")
@@ -79,7 +95,7 @@ class ProjectView {
             addTaskBtn.innerHTML = `<i class="fa-solid fa-plus">&nbsp;</i>Add task`;
 
             addTaskBtn.addEventListener("click", event => {
-                taskForm.open(0);
+                this.taskForm.open(0);
             });
         }
     }
