@@ -28,14 +28,14 @@
     margin-bottom: 1em;
     text-align: center;
 }
-label, input, select {
+label,form input, select {
     display: block;
 }
 .modal-content button,  label, input,  select {
     font-size: inherit;
     font-family: inherit;
 }
-input, select {
+form input, select {
     margin-bottom: 1em;
     border-radius: 5px;
     padding: 7.5px;
