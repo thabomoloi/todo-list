@@ -114,11 +114,13 @@ footer {
 }
 #content .btn-add-task {
     margin-left: auto;
-    font-weight: 700;
+    font-weight: 600;
     padding: 0.5em 1.5em;
     background-color: #0f766e;
     color: white;
     border: none;
+    font-size: inherit;
+    font-family: inherit;
     border-radius: 10px;
 }
 #content .btn-add-task:hover {
