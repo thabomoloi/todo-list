@@ -23,7 +23,7 @@ class SidebarView {
         this.tasks.innerHTML = `
             <h2>Tasks</h2>
             <div id="task-menu" class="nav-items"> 
-                <button id="inbox-button" class="nav-item"><i class="fa-solid fa-inbox"></i>Inbox</button>
+                <button id="inbox-button" class="nav-item active-side-menu-btn"><i class="fa-solid fa-inbox"></i>Inbox</button>
                 <button id="today-button" class="nav-item"><i class="fa-solid fa-calendar-day"></i>Today</button>
                 <button id="week-buttion" class="nav-item"><i class="fa-solid fa-calendar-week"></i>This Week</button>
             </div>
