@@ -66,57 +66,17 @@ footer {
 
 
 
-.task-form {
-    display: grid;
-    gap: 0.5em;
-    grid-template-columns: auto 1fr 1fr;
-    padding: 1.5em;
-}
-
-.task-form input[type="text"], 
-.task-form select,
-.task-form input[type="date"] {
-    grid-column: 2 / 4;
-}
-.task-form input[type="submit"] {
-    grid-column: 3 / 4;
-    font-weight: 800;
-    grid-row: 6 / 7 ;
-    padding: 0.25em;
-    background-color: rgb(0, 100, 0);
-    color: white;
-    border: 2px solid white;
-    border-radius: 10px;
-}
-.task-form button {
-    grid-column: 2 / 3;
-    font-weight: 800;
-    grid-row: 6 / 7 ;
-    background-color: rgb(150, 0, 0);
-    color: white;
-    border: 2px solid white;
-    border-radius: 10px;
-}
-.task-form button:hover {
-    background-color: rgb(200, 0, 0);
-    border: 2px solid rgb(200, 0, 0);
-}
-.task-form input[type="submit"]:hover {
-    background-color: rgb(0, 150, 0);
-    border: 2px solid rgb(0, 150, 0);
-}
 .task-view {
     display: flex;
     flex-direction: column;
-    gap: 0.75em;
-  
+    gap: 1em;
 }
-.task-view div {
+.task-view > div {
     display: flex;
     gap: 1em;
     align-items: center;
 }
-.task-view div span:first-of-type{
+.task-view div span:nth-of-type(2){
     margin-left: auto;
 }
 
@@ -166,8 +126,8 @@ footer {
 }
 #content .task-view input[type="checkbox"] {
     appearance: none;
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.25em;
+    height: 1.25em;
     border: 2px solid black;
 }
 span.task-due-date {
