@@ -1,5 +1,6 @@
 import ProjectController from "../AppLogic/ProjectController";
 import Task from "../Entities/Task";
+import ProjectView from "./ProjectView";
 
 class TaskForm {
     /**
@@ -109,16 +110,16 @@ class TaskForm {
         });
 
         this.form.onsubmit = (event) => {
-            if (this.operation == this.mode.ADD) {
-                const projID = document.querySelector("#content > h1")?.id;
-                if (projID)
-                    this.projectController.addTask(
-                        projID,
-                        this.taskNameInput.value,
-                        this.taskDescriptionInput.value,
-                        this.taskDueDateInput.value,
-                        this.taskPrioritySelect.value);
+            event.preventDefault(); // Prevent Page refresh
+            const projID = document.querySelector("#content > h1")?.id; // ID of the project
 
+            if (this.operation == this.mode.ADD && projID) {
+                this.projectController.addTask(
+                    projID,
+                    this.taskNameInput.value,
+                    this.taskDescriptionInput.value,
+                    this.taskDueDateInput.value,
+                    this.taskPrioritySelect.value);
             }
             else {
                 this.task.name = this.taskNameInput.value;
@@ -127,6 +128,9 @@ class TaskForm {
                 this.task.priority = this.taskPrioritySelect.value;
                 this.projectController.updateTask(this.task);
             }
+
+            if (projID)
+                new ProjectView(this, this.projectController, projID); // Refresh content
             this.close();
         }
 
