@@ -73,6 +73,7 @@ class SidebarView {
     }
     load() {
         const sidebar = document.querySelector("#sidemenu");
+        sidebar.innerHTML = "";
         sidebar.appendChild(this.sidebarContainer);
     }
     addeventsListeners() {
