@@ -1,15 +1,18 @@
 import ProjectForm from "./ProjectForm";
 import ProjectController from "../AppLogic/ProjectController";
+import ProjectView from "./ProjectView";
 
 class SidebarView {
     /**
      * 
      * @param {ProjectForm} projectForm 
+     * @param {TaskForm} taskForm
      * @param {ProjectController} projectController
      */
-    constructor(projectForm, projectController) {
+    constructor(projectForm, taskForm, projectController) {
         this.projectController = projectController;
         this.projectForm = projectForm;
+        this.taskForm = taskForm;
 
         /******** Elements *********/
         this.sidebarContainer = document.createElement("div");
@@ -43,12 +46,25 @@ class SidebarView {
         if (this.projectMenu) {
             projectController.allProjects().forEach(element => {
                 const projButton = document.createElement("button");
+                projButton.classList.add("nav-item");
                 if (element.name != "Inbox") {
                     projButton.innerHTML = `<i class="fa-solid fa-list-check"></i>${element.name}`;
-                    projButton.id = element.id;
+                    projButton.id = element.ID;
                     this.projectMenu.appendChild(projButton);
                     //===================
+                    projButton.addEventListener('click', () => {
+                        const view = new ProjectView(this.taskForm, this.projectController, element.ID);
+
+                        // Remove Active Side Menu Button
+                        document.querySelectorAll("#sidemenu .nav-item").forEach(navItem => {
+                            if (navItem.classList.contains("active-side-menu-btn"))
+                                navItem.classList.remove("active-side-menu-btn");
+                        });
+
+                        projButton.classList.add("active-side-menu-btn");
+                    });
                 }
+
 
             });
         }
