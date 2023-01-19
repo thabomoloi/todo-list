@@ -6,9 +6,10 @@ import ProjectView from "./View/ProjectView";
 import TaskForm from "./View/TaskForm";
 
 const controller = new ProjectController();
-const projectForm = new ProjectForm(controller);
-new SidebarView(projectForm, controller);
 
-new Header();
 const taskForm = new TaskForm(controller);
+const projectForm = new ProjectForm(controller);
+
+new SidebarView(projectForm, taskForm, controller);
+new Header();
 new ProjectView(taskForm, controller, "project-1");
