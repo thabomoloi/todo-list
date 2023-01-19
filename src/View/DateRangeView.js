@@ -63,14 +63,23 @@ class DateRangeView {
                 container.appendChild(taskDiv);
 
                 // Done checkboxk
+                const checkDiv = document.createElement("div")
+                checkDiv.classList.add("checks");
+
                 const doneCheck = document.createElement("input");
                 doneCheck.setAttribute("type", "checkbox");
+                checkDiv.appendChild(doneCheck);
+                checkDiv.appendChild(document.createElement("span"));
+
                 doneCheck.checked = task.done;
+                doneCheck.style.backgroundImage = (doneCheck.checked) ? "url('./images/check-solid.svg')" : "none";
 
                 doneCheck.onclick = () => {
                     task.done = doneCheck.checked;
                     this.projectController.updateTask(task);
                     taskDiv.classList.toggle("done-task");
+                    doneCheck.style.backgroundImage = (doneCheck.checked) ? "url('./images/check-solid.svg')" : "none";
+
                 };
 
                 if (task.done)
@@ -112,7 +121,7 @@ class DateRangeView {
                     new DateRangeView(this.taskForm, this.projectController, this.senderID);
                 }
 
-                taskDiv.append(doneCheck, nameDescr, priorityColor, dueDate, editButton, deleteButton);
+                taskDiv.append(checkDiv, nameDescr, priorityColor, dueDate, editButton, deleteButton);
             });
         }
     }

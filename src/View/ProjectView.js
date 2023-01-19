@@ -55,11 +55,15 @@ class ProjectView {
                 const doneCheck = document.createElement("input");
                 doneCheck.setAttribute("type", "checkbox");
                 doneCheck.checked = task.done;
+                doneCheck.style.backgroundImage = (doneCheck.checked) ? "url('./images/check-solid.svg')" : "none";
 
                 doneCheck.onclick = () => {
                     task.done = doneCheck.checked;
                     this.projectController.updateTask(task);
                     taskDiv.classList.toggle("done-task");
+
+                    doneCheck.style.backgroundImage = (doneCheck.checked) ? "url('./images/check-solid.svg')" : "none";
+
                 };
 
                 if (task.done)
