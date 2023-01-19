@@ -28,7 +28,7 @@ class SidebarView {
             <div id="task-menu" class="nav-items"> 
                 <button id="inbox-button" class="nav-item active-side-menu-btn"><i class="fa-solid fa-inbox"></i>Inbox</button>
                 <button id="today-button" class="nav-item"><i class="fa-solid fa-calendar-day"></i>Today</button>
-                <button id="week-buttion" class="nav-item"><i class="fa-solid fa-calendar-week"></i>This Week</button>
+                <button id="week-button" class="nav-item"><i class="fa-solid fa-calendar-week"></i>This Week</button>
             </div>
         `;
 
@@ -82,6 +82,26 @@ class SidebarView {
         addProjectBtn.addEventListener("click", event => {
             this.projectForm.open(0);
         });
+
+        document.querySelectorAll("#sidemenu .nav-item").forEach(navItem => {
+
+            navItem.addEventListener("click", (event) => {
+                // Remove active button
+                document.querySelectorAll("#sidemenu .nav-item").forEach(navItem2 => {
+                    if (navItem2.classList.contains("active-side-menu-btn"))
+                        navItem2.classList.remove("active-side-menu-btn");
+                });
+                navItem.classList.add("active-side-menu-btn");
+
+                const permanentItems = ["inbox-button", "today-button", "week-button"];
+                if (!permanentItems.includes(navItem.id)) {
+                    new ProjectView(this.taskForm, this.projectController, navItem.id);
+                }
+                else if (navItem.id == "inbox-button") {
+                    new ProjectView(this.taskForm, this.projectController, "project-1");
+                }
+            });
+        })
     }
 }
 
