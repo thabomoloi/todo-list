@@ -1,6 +1,7 @@
 import ProjectForm from "./ProjectForm";
 import ProjectController from "../AppLogic/ProjectController";
 import ProjectView from "./ProjectView";
+import DateRangeView from "./DateRangeView";
 
 class SidebarView {
     /**
@@ -26,9 +27,9 @@ class SidebarView {
         this.tasks.innerHTML = `
             <h2>Tasks</h2>
             <div id="task-menu" class="nav-items"> 
-                <button id="inbox-button" class="nav-item active-side-menu-btn"><i class="fa-solid fa-inbox"></i>Inbox</button>
-                <button id="today-button" class="nav-item"><i class="fa-solid fa-calendar-day"></i>Today</button>
-                <button id="week-button" class="nav-item"><i class="fa-solid fa-calendar-week"></i>This Week</button>
+                <button id="inbox" class="nav-item active-side-menu-btn"><i class="fa-solid fa-inbox"></i>Inbox</button>
+                <button id="today" class="nav-item"><i class="fa-solid fa-calendar-day"></i>Today</button>
+                <button id="week" class="nav-item"><i class="fa-solid fa-calendar-week"></i>This Week</button>
             </div>
         `;
 
@@ -93,12 +94,15 @@ class SidebarView {
                 });
                 navItem.classList.add("active-side-menu-btn");
 
-                const permanentItems = ["inbox-button", "today-button", "week-button"];
+                const permanentItems = ["inbox", "today", "week"];
                 if (!permanentItems.includes(navItem.id)) {
                     new ProjectView(this.taskForm, this.projectController, navItem.id);
                 }
-                else if (navItem.id == "inbox-button") {
+                else if (navItem.id == "inbox") {
                     new ProjectView(this.taskForm, this.projectController, "project-1");
+                }
+                else {
+                    new DateRangeView(this.taskForm, this.projectController, navItem.id);
                 }
             });
         })
