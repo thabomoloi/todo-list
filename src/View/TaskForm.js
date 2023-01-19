@@ -1,5 +1,6 @@
 import ProjectController from "../AppLogic/ProjectController";
 import Task from "../Entities/Task";
+import DateRangeView from "./DateRangeView";
 import ProjectView from "./ProjectView";
 
 class TaskForm {
@@ -129,8 +130,10 @@ class TaskForm {
                 this.projectController.updateTask(this.task);
             }
 
-            if (projID)
+            if (projID && projID.includes("project"))
                 new ProjectView(this, this.projectController, projID); // Refresh content
+            else
+                new DateRangeView(this, this.projectController, projID);
             this.close();
         }
 
