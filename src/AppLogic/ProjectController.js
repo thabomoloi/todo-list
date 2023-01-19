@@ -27,7 +27,7 @@ class ProjectController {
         tasks.pop();
 
         this.projectStorage.allProjects().forEach(project => {
-            tasks = Object.assign([], tasks, project.tasks);
+            tasks = tasks.concat(project.tasks);
         });
         return tasks;
     }
