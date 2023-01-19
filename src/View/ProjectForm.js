@@ -1,11 +1,14 @@
 import ProjectController from "../AppLogic/ProjectController";
+import SidebarView from "./SidebarView";
 
 class ProjectForm {
     /**
      * 
      * @param {ProjectController} projectController 
+     * @param {TaskForm} taskForm
      */
-    constructor(projectController) {
+    constructor(projectController, taskForm) {
+        this.taskForm = taskForm;
         this.mode = { ADD: 0, Edit: 1 };
         this.operation = 0;
 
@@ -84,6 +87,8 @@ class ProjectForm {
         });
 
         this.form.onsubmit = (event) => {
+            event.preventDefault(); // Prevent Page refresh
+
             const projectName = this.nameInput.value;
             if (this.operation == this.mode.ADD)
                 this.projectController.addProject(projectName);
@@ -91,6 +96,18 @@ class ProjectForm {
                 this.project.name = projectName;
                 this.projectController.updateProject(this.project);
             }
+            const activeID = document.querySelector(".nav-item.active-side-menu-btn").id;
+
+            new SidebarView(this, this.taskForm, this.projectController);
+
+            // Remove Active Side Menu Button
+            document.querySelectorAll("#sidemenu .nav-item").forEach(navItem => {
+                if (navItem.classList.contains("active-side-menu-btn"))
+                    navItem.classList.remove("active-side-menu-btn");
+            });
+
+            document.querySelector(`#sidemenu button.nav-item#${activeID}`).classList.add("active-side-menu-btn");
+
             this.close();
         }
 
