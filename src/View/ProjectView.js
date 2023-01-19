@@ -4,6 +4,7 @@ import Task from "../Entities/Task";
 import TaskForm from "./TaskForm";
 import { differenceInDays, format } from "date-fns";
 import DA from "../DataAccess/DA";
+import SidebarView from "./SidebarView";
 
 class ProjectView {
     /**
@@ -27,6 +28,20 @@ class ProjectView {
             content.appendChild(this.heading);
             this.heading.id = this.project.ID;
             this.heading.innerText = this.project.name;
+
+            if (this.heading.id.includes("project") && !this.project.name.includes("Inbox")) {
+                const deleteIcon = document.createElement("span");
+                deleteIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+                this.heading.appendChild(deleteIcon);
+
+                deleteIcon.style.float = "right";
+                deleteIcon.style.fontSize = "0.8em";
+
+                deleteIcon.addEventListener("click", (event) => {
+                    this.projectController.removeProject(this.project.ID);
+                    location.reload();
+                });
+            }
 
             const container = document.createElement("div");
             container.classList.add("task-view");

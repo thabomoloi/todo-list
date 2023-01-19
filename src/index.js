@@ -8,7 +8,7 @@ import TaskForm from "./View/TaskForm";
 const controller = new ProjectController();
 
 const taskForm = new TaskForm(controller);
-const projectForm = new ProjectForm(controller);
+const projectForm = new ProjectForm(controller, taskForm);
 
 new SidebarView(projectForm, taskForm, controller);
 new Header();
