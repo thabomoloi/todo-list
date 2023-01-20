@@ -1,4 +1,3 @@
-@import url("../fontawesome/css/all.css");
 @import url("./forms.css");
 @import url("./sidebar.css");
 
@@ -151,7 +150,6 @@ div.done-task.task-due-date-passed{
 @media screen and (max-width: 780px) {
     body{
         max-width: 100vw;
-        overflow: hidden;
     }
     main {
         position: relative;
@@ -181,6 +179,8 @@ div.done-task.task-due-date-passed{
         background-color: #003e5b;;
         position: absolute;
         z-index: 10;
+        bottom: 0px;
+        top: 0px;
     }
     #sidemenu {
         color: whitesmoke;
